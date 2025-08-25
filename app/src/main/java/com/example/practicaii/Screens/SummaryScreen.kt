@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SummaryScreen(name: String, age: String) {
+fun SummaryScreen(name: String, age: String, profession: String, hobbies: String) {
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
@@ -19,5 +19,7 @@ fun SummaryScreen(name: String, age: String) {
         )
         Text("Nombre: $name")
         Text("Edad: $age")
+        Text("Profesión: $profession")
+        Text("Hobbies: $hobbies")
     }
 }

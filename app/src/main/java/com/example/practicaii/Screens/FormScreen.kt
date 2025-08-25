@@ -2,6 +2,8 @@ package com.example.practicaii.Screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -23,6 +25,8 @@ import androidx.navigation.NavController
 fun FormScreen(navController: NavController){
     var name by rememberSaveable { mutableStateOf("") }
     var age  by  rememberSaveable { mutableStateOf("") }
+    var profession  by  rememberSaveable { mutableStateOf("") }
+    var hobbies  by  rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = Modifier.padding(16.dp),
@@ -47,9 +51,26 @@ fun FormScreen(navController: NavController){
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
 
+
+        OutlinedTextField(
+            value = profession,
+            onValueChange = {profession = it},
+            label = {Text("Profesión")},
+        )
+
+        OutlinedTextField(
+            value = hobbies,
+            onValueChange = {hobbies = it},
+            label = {Text("Hobbies")},
+            singleLine = false, // Permite múltiples líneas
+            maxLines = 5, // Número máximo de líneas
+            modifier = Modifier.fillMaxWidth() // Ocupa todo el ancho disponible
+        )
+
+
         Button(
             onClick = {
-                navController.navigate("summary?name=$name&age=$age")
+                navController.navigate("summary?name=$name&age=$age&profession=$profession&hobbies=$hobbies")
             }
         ){
             Text("Enviar")

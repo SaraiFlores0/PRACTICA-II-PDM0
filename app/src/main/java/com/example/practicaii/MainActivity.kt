@@ -35,10 +35,12 @@ class MainActivity : ComponentActivity() {
                         }
 
                         //Pantalla del resumen (recibe parámetros de navegación)
-                        composable("summary?name={name}&age={age}"){ backStackEntry ->
+                        composable("summary?name={name}&age={age}&profession={profession}&hobbies={hobbies}"){ backStackEntry ->
                             SummaryScreen(
                                 name= backStackEntry.arguments?.getString("name") ?: "",
-                                age = backStackEntry.arguments?.getString("age") ?: ""
+                                age = backStackEntry.arguments?.getString("age") ?: "",
+                                profession = backStackEntry.arguments?.getString("profession") ?: "",
+                                hobbies = backStackEntry.arguments?.getString("hobbies") ?: ""
                             )
 
                         }
